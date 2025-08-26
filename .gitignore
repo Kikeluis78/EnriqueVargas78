@@ -1,4 +1,5 @@
-# Logs
+
+# Log
 logs
 *.log
 npm-debug.log*
@@ -23,6 +24,7 @@ dist-ssr
 *.sln
 *.sw?
 
+ f9c05a49b2b24845053338d2d2198af402f3b7b5
 # This .gitignore is appropriate for repositories deployed to GitHub Pages and using
 # a Gemfile as specified at https://github.com/github/pages-gem#conventional
 

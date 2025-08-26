@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # 🌐 Sitio Enrique Vargas
 
 Este es mi sitio web personal desarrollado con **React + Vite + TailwindCSS**.  
@@ -71,3 +72,7 @@ npm install
 # Ejecutar en modo desarrollo
 npm run dev
 >>>>>>> 6611321149039661a760bea097153efbad5f0525
+=======
+# EnriqueVargas78
+My Sitio Web
+>>>>>>> f9c05a49b2b24845053338d2d2198af402f3b7b5
