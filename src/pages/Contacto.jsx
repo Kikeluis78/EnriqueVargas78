@@ -1,9 +1,8 @@
+// src/pages/Contacto.jsx
 import { useRef, useEffect } from "react";
 import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 
 export default function Contacto() {
   const formRef = useRef(null);
@@ -114,48 +113,42 @@ export default function Contacto() {
         Solo necesito algunos datos para comenzar a trabajar en tu proyecto.
       </p>
 
-      {/* Timeline Desktop */}
-      <div className="hidden md:flex w-full max-w-5xl mb-10 md:mb-12 items-center justify-between relative">
-        <div className="absolute top-1/2 left-0 w-full h-1 bg-blue-600"></div>
-        {steps.map((step, index) => (
-          <div
-            key={index}
-            className="relative flex flex-col items-center text-center w-1/6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg normal-case"
-            data-aos="zoom-in"
-          >
-            <div className="circle-pulse w-12 h-12 flex items-center justify-center rounded-full bg-blue-600 text-white font-bold z-10">
-              {index + 1}
-            </div>
-            <p className="mt-2 text-gray-300 text-sm md:text-base">{step}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* Timeline Mobile - Swiper */}
-      <div className="w-full max-w-md md:hidden mb-10">
-        <Swiper
-          spaceBetween={16}
-          slidesPerView={2}
-          centeredSlides={true}
-          loop={true}
-        >
+      {/* Timeline */}
+      <div className="w-full max-w-5xl mb-10 md:mb-12">
+        {/* Desktop: timeline horizontal */}
+        <div className="hidden md:flex items-center justify-between relative">
+          <div className="absolute top-1/2 left-0 w-full h-1 bg-blue-600"></div>
           {steps.map((step, index) => (
-            <SwiperSlide key={index}>
-              <div
-                className="bg-gray-900 border border-blue-500 rounded-lg p-4 shadow-sm text-center normal-case"
-                data-aos="fade-up"
-              >
-                <div className="w-6 h-6 flex items-center justify-center rounded-full bg-blue-600 text-white font-bold mb-2">
-                  {index + 1}
-                </div>
-                <p className="text-gray-300 text-[11px]">{step}</p>
+            <div
+              key={index}
+              className="relative flex flex-col items-center text-center w-1/6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg normal-case"
+              data-aos="zoom-in"
+            >
+              <div className="circle-pulse w-12 h-12 flex items-center justify-center rounded-full bg-blue-600 text-white font-bold z-10">
+                {index + 1}
               </div>
-            </SwiperSlide>
+              <p className="mt-2 text-gray-300 text-sm md:text-base">{step}</p>
+            </div>
           ))}
-        </Swiper>
+        </div>
+
+        {/* Mobile: timeline horizontal scroll */}
+        <div className="flex gap-4 md:hidden overflow-x-auto snap-x snap-mandatory p-2 scroll-smooth no-scrollbar">
+          {steps.map((step, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 snap-center bg-gray-900 border border-blue-500 rounded-lg p-4 shadow-sm min-w-[140px] text-center normal-case"
+              data-aos="fade-up"
+            >
+              <div className="w-6 h-6 flex items-center justify-center rounded-full bg-blue-600 text-white font-bold mb-2">
+                {index + 1}
+              </div>
+              <p className="text-gray-300 text-[11px]">{step}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Formulario */}
       <form
         ref={formRef}
         target="dummyFrame"

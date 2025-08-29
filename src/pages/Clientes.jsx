@@ -1,9 +1,8 @@
+// src/pages/Clientes.jsx
 import ModalConstruccion from "../components/ModalConstruccion";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 
 export default function Clientes() {
-  const clientes = Array.from({ length: 8 }, (_, i) => i + 1); // Números del 1 al 8
+  const clientes = Array.from({ length: 8 }, (_, i) => i + 1); // Genera números del 1 al 8
 
   return (
     <>
@@ -25,19 +24,12 @@ export default function Clientes() {
             Estas son algunas de las marcas y empresas que han confiado en mi trabajo.
           </p>
 
-          {/* Swiper horizontal para móviles y desktop */}
-          <Swiper
-            spaceBetween={16}
-            slidesPerView={2}
-            breakpoints={{
-              640: { slidesPerView: 3 },
-              768: { slidesPerView: 4 },
-              1024: { slidesPerView: 5 },
-            }}
-          >
-            {clientes.map((i) => (
-              <SwiperSlide key={i}>
+          {/* Contenedor horizontal scroll en móvil */}
+          <div className="w-full overflow-x-auto md:overflow-x-visible">
+            <div className="flex gap-6 min-w-max">
+              {clientes.map((i) => (
                 <div
+                  key={i}
                   className="flex items-center justify-center p-4 bg-gray-800 rounded-lg shadow-lg transition-transform hover:scale-105 flex-shrink-0"
                 >
                   <img
@@ -48,9 +40,9 @@ export default function Clientes() {
                     translate="no"
                   />
                 </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </>

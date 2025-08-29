@@ -2,13 +2,19 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import "../scroll.css";
 import { Link } from "react-router-dom";
-import { 
-  CheckCircle, Layout, Smartphone, MessageCircle, Mail, MapPin, Server, Lock, LifeBuoy 
+import {
+  CheckCircle,
+  Layout,
+  Smartphone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  Server,
+  Lock,
+  LifeBuoy,
 } from "lucide-react";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 
 export default function Precios() {
   const [mostrarBotonScroll, setMostrarBotonScroll] = useState(false);
@@ -48,7 +54,7 @@ export default function Precios() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white px-4 py-16 flex flex-col items-center overflow-x-hidden">
       <div className="w-full max-w-5xl p-8 bg-gray-800/70 backdrop-blur-lg rounded-3xl shadow-2xl">
-
+        
         {/* Tabs navegación */}
         <div className="flex justify-center gap-6 mb-12" data-aos="fade-down">
           <Link to="/Precios">
@@ -98,38 +104,14 @@ export default function Precios() {
           <span className="text-yellow-300 font-semibold normal-case">máximo 7 días hábiles</span>.
         </p>
 
-        {/* Carrusel horizontal servicios móviles / Grid escritorio */}
-        <div className="md:hidden">
-          <Swiper
-            spaceBetween={16}
-            slidesPerView={"auto"}
-            className="py-4"
-          >
-            {servicios.map((item, index) => {
-              const IconComponent = item.icon;
-              return (
-                <SwiperSlide key={index} className="w-[220px]">
-                  <div
-                    className="flex items-center gap-4 p-5 bg-gray-900/70 rounded-xl shadow-md hover:scale-105 transition-transform"
-                    data-aos="fade-up"
-                    data-aos-delay={index * 100}
-                  >
-                    <IconComponent className="text-green-400 w-7 h-7 flex-shrink-0" />
-                    <p className="text-gray-200 font-medium text-sm sm:text-base normal-case">{item.text}</p>
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-        </div>
-
-        <div className="hidden md:grid md:grid-cols-2 md:gap-6">
+        {/* Carrusel horizontal de servicios en móvil, grid en escritorio */}
+        <div className="flex space-x-4 overflow-x-auto snap-x snap-mandatory p-2 md:grid md:grid-cols-2 md:gap-6 no-scrollbar">
           {servicios.map((item, index) => {
             const IconComponent = item.icon;
             return (
               <div
                 key={index}
-                className="flex items-center gap-4 p-5 bg-gray-900/70 rounded-xl shadow-md hover:scale-105 transition-transform"
+                className="flex-shrink-0 snap-center flex items-center gap-4 p-5 bg-gray-900/70 rounded-xl shadow-md hover:scale-105 transition-transform min-w-[220px]"
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >

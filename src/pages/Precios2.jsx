@@ -3,8 +3,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import "../styles/scroll.css"; // importa el CSS de scroll
 
 export default function Precios2() {
   useEffect(() => {
@@ -77,47 +76,12 @@ export default function Precios2() {
           Planes Avanzados
         </h1>
 
-        {/* Paquetes - Swiper para móviles / Grid escritorio */}
-        <div className="md:hidden">
-          <Swiper
-            spaceBetween={16}
-            slidesPerView={"auto"}
-            className="py-4"
-          >
-            {paquetes.map((item, index) => (
-              <SwiperSlide key={index} className="w-[260px]">
-                <div
-                  className="bg-gray-900/70 rounded-2xl shadow-lg p-8 text-center hover:scale-105 transition-transform"
-                  data-aos="fade-up"
-                  data-aos-delay={index * 100}
-                >
-                  <h3 className={`text-2xl font-bold mb-4 ${item.colorTitulo} normal-case`}>
-                    {item.titulo}
-                  </h3>
-                  <p className="text-gray-300 mb-6 normal-case">{item.descripcion}</p>
-                  <ul className="text-gray-300 space-y-2 text-sm mb-6 normal-case">
-                    {item.features.map((f, i) => <li key={i}>{f}</li>)}
-                  </ul>
-                  <p className="text-3xl font-extrabold text-yellow-300 mb-4 normal-case">{item.precio}</p>
-                  <Link to="/Contacto">
-                    <button
-                      className={`px-6 py-3 bg-gradient-to-r ${item.botonGradient} text-black font-bold rounded-xl shadow-lg hover:scale-105 transition-transform normal-case`}
-                    >
-                      {item.botonTexto}
-                    </button>
-                  </Link>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-
-        {/* Grid escritorio */}
-        <div className="hidden md:grid md:grid-cols-2 md:gap-8">
+        {/* Paquetes - Carrusel horizontal en móvil */}
+        <div className="flex space-x-4 overflow-x-auto snap-x snap-mandatory p-2 md:grid md:grid-cols-2 md:gap-8 no-scrollbar scroll-smooth">
           {paquetes.map((item, index) => (
             <div
               key={index}
-              className="bg-gray-900/70 rounded-2xl shadow-lg p-8 text-center hover:scale-105 transition-transform"
+              className="flex-shrink-0 snap-center bg-gray-900/70 rounded-2xl shadow-lg p-8 text-center hover:scale-105 transition-transform min-w-[260px]"
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
@@ -126,7 +90,9 @@ export default function Precios2() {
               </h3>
               <p className="text-gray-300 mb-6 normal-case">{item.descripcion}</p>
               <ul className="text-gray-300 space-y-2 text-sm mb-6 normal-case">
-                {item.features.map((f, i) => <li key={i}>{f}</li>)}
+                {item.features.map((f, i) => (
+                  <li key={i}>{f}</li>
+                ))}
               </ul>
               <p className="text-3xl font-extrabold text-yellow-300 mb-4 normal-case">{item.precio}</p>
               <Link to="/Contacto">
@@ -183,23 +149,28 @@ export default function Precios2() {
           {[
             {
               pregunta: "¿Qué pasa después del primer año con el hosting y dominio?",
-              respuesta: "El primer año está incluido. A partir del segundo año, puedes renovarlo con nosotros o directamente con el proveedor. Te ayudamos en el proceso para que no pierdas tu web.",
+              respuesta:
+                "El primer año está incluido. A partir del segundo año, puedes renovarlo con nosotros o directamente con el proveedor. Te ayudamos en el proceso para que no pierdas tu web.",
             },
             {
               pregunta: "¿Puedo pedir más secciones o funciones personalizadas?",
-              respuesta: "¡Claro! Los planes básicos incluyen lo anunciado, pero siempre puedes solicitar extras como más secciones, integración con pasarelas de pago, reservas, chat en línea, etc.",
+              respuesta:
+                "¡Claro! Los planes básicos incluyen lo anunciado, pero siempre puedes solicitar extras como más secciones, integración con pasarelas de pago, reservas, chat en línea, etc.",
             },
             {
               pregunta: "¿En cuánto tiempo entregan la página?",
-              respuesta: "Dependiendo de la complejidad, un sitio básico se entrega en 5 a 7 días hábiles. Tiendas en línea o proyectos personalizados pueden tardar entre 10 y 20 días.",
+              respuesta:
+                "Dependiendo de la complejidad, un sitio básico se entrega en 5 a 7 días hábiles. Tiendas en línea o proyectos personalizados pueden tardar entre 10 y 20 días.",
             },
             {
               pregunta: "¿Qué métodos de pago aceptan?",
-              respuesta: "Aceptamos transferencias bancarias, depósitos y pagos vía PayPal. También podemos ofrecer pagos parciales según el proyecto.",
+              respuesta:
+                "Aceptamos transferencias bancarias, depósitos y pagos vía PayPal. También podemos ofrecer pagos parciales según el proyecto.",
             },
             {
               pregunta: "¿Ofrecen soporte después de la entrega?",
-              respuesta: "Sí. Incluimos soporte técnico básico y asesoría inicial para que manejes tu sitio. También puedes contratar planes de mantenimiento mensual si lo deseas.",
+              respuesta:
+                "Sí. Incluimos soporte técnico básico y asesoría inicial para que manejes tu sitio. También puedes contratar planes de mantenimiento mensual si lo deseas.",
             },
           ].map((item, index) => (
             <details
