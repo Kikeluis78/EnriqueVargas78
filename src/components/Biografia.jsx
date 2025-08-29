@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Mision from "./Mision"; // ajusta la ruta según tu estructura
+import Mision from "./Mision"; 
+import "../scroll.css"; 
 
 const Biografia = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -24,35 +25,49 @@ const Biografia = () => {
         className="w-full md:w-2/3 md:pl-8 text-center md:text-left order-3 md:order-2"
         data-aos="fade-left"
       >
-        <h2 className="text-3xl font-bold text-yellow-300 mb-4">Sobre mí</h2>
+        <h2 className="text-3xl font-bold text-yellow-300 mb-4 normal-case">Sobre mí</h2>
 
-        <p className="text-white text-lg mb-4">
-          Hola, soy <span className="font-semibold">Enrique Vargas</span>, diseñador web y especialista en marketing digital. 
+        <p className="text-white text-lg mb-4 normal-case">
+          Hola, soy <span className="font-semibold normal-case">Enrique Vargas</span>, diseñador web y especialista en marketing. 
           Me apasiona ayudar a emprendedores y negocios a crecer en Internet con páginas modernas, funcionales y adaptadas a dispositivos móviles.
         </p>
 
-        <p className="text-gray-300 mb-4">
+        <p className="text-gray-300 mb-4 normal-case">
           Con más de 15 años de experiencia trabajando directamente con personas y empresas, combino creatividad y estrategia 
           para que tu negocio se destaque en línea. Cada proyecto que desarrollo está orientado a maximizar resultados, mejorar 
           la presencia digital y brindar experiencias memorables a tus clientes.  
         </p>
 
-        <p className="text-gray-300 mb-6">
+        <p className="text-gray-300 mb-6 normal-case">
           Mi enfoque siempre busca generar una sinergia sólida entre negocio y cliente, construyendo relaciones basadas en confianza, 
           innovación y resultados sostenibles a largo plazo.
         </p>
 
+        {/* Botón solo visible en desktop/tablet */}
         <button
           onClick={() => setOpenModal(true)}
-          className="px-6 py-3 bg-yellow-400 text-black font-semibold rounded-xl shadow-md hover:bg-yellow-300 hover:scale-105 transition-all duration-300"
+          className="hidden md:inline-block px-6 py-3 bg-yellow-400 text-black font-semibold rounded-xl shadow-md hover:bg-yellow-300 hover:scale-105 transition-all duration-300"
         >
           Misión y Visión
         </button>
+
+        {/* Carrusel horizontal (opcional) */}
+        <div className="w-full mt-8 flex space-x-4 overflow-x-auto no-scrollbar p-2">
+          <div className="min-w-[200px] h-40 bg-yellow-400 rounded-xl flex items-center justify-center text-black font-bold">
+            Proyecto 1
+          </div>
+          <div className="min-w-[200px] h-40 bg-yellow-500 rounded-xl flex items-center justify-center text-black font-bold">
+            Proyecto 2
+          </div>
+          <div className="min-w-[200px] h-40 bg-yellow-600 rounded-xl flex items-center justify-center text-black font-bold">
+            Proyecto 3
+          </div>
+        </div>
       </div>
 
       {/* Foto con efecto hover */}
       <div
-        className="w-full md:w-1/3 flex justify-center mb-6 md:mb-0 order-2 md:order-1"
+        className="w-full md:w-1/3 flex flex-col items-center mb-12 md:mb-0 order-2 md:order-1"
         data-aos="fade-right"
       >
         <img
@@ -60,6 +75,14 @@ const Biografia = () => {
           alt="Enrique Vargas"
           className="rounded-full w-48 h-48 object-cover shadow-2xl border-4 border-yellow-300 transform transition-transform duration-500 hover:scale-105"
         />
+
+        {/* Botón solo visible en móvil (full-width debajo de la foto) */}
+        <button
+          onClick={() => setOpenModal(true)}
+          className="block md:hidden w-full mt-6 px-6 py-4 bg-yellow-400 text-black font-semibold rounded-xl shadow-md hover:bg-yellow-300 active:scale-95 transition-all duration-300"
+        >
+          Misión y Visión
+        </button>
       </div>
 
       {/* Modal */}

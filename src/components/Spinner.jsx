@@ -20,7 +20,7 @@ export default function Spinner() {
     "De idea a prototipo… y a producción.",
   ];
 
-  const durationPerStep = 1; // segundos
+  const durationPerStep = 1000; // ms
   const [progress, setProgress] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [tick, setTick] = useState(0);
@@ -29,7 +29,6 @@ export default function Spinner() {
     AOS.init({ duration: 1500, once: true });
   }, []);
 
-  // Simula progreso de carga
   useEffect(() => {
     let current = 0;
     const interval = setInterval(() => {
@@ -41,16 +40,14 @@ export default function Spinner() {
       }
       setProgress(current);
     }, 100);
-
     return () => clearInterval(interval);
   }, []);
 
-  // Cambia tick para imágenes y frases
   useEffect(() => {
     if (!loaded) {
       const interval = setInterval(() => {
         setTick((prev) => (prev + 1) % images.length);
-      }, durationPerStep * 1000);
+      }, durationPerStep);
       return () => clearInterval(interval);
     }
   }, [loaded, images.length]);
@@ -58,30 +55,26 @@ export default function Spinner() {
   if (!loaded) {
     return (
       <div className="fixed inset-0 flex flex-col items-center justify-center bg-black z-50 px-4">
-        {/* Nombre con animación AOS */}
         <h1
           data-aos="zoom-in"
-          className="mb-10 text-5xl sm:text-6xl lg:text-7xl font-extrabold 
-  bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-pink-400 to-purple-400 
-  tracking-wide text-center max-w-[90%] break-words"
+          className="mb-10 text-5xl sm:text-6xl lg:text-7xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-pink-400 to-purple-400 tracking-wide text-center max-w-[90%] break-words"
         >
           Enrique Vargas
         </h1>
 
-        {/* Imágenes girando */}
         <div className="relative w-32 h-32 flex items-center justify-center mb-6">
           {images.map((img, i) => (
             <img
               key={i}
               src={img}
               alt={`tech-${i}`}
-              className={`absolute w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-lg transition-all duration-800 ease-in-out
-                ${i === tick ? "opacity-100 scale-110" : "opacity-0 scale-75"}`}
+              className={`absolute w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-lg transition-all duration-800 ease-in-out ${
+                i === tick ? "opacity-100 scale-110" : "opacity-0 scale-75"
+              }`}
             />
           ))}
         </div>
 
-        {/* Barra de progreso */}
         <div className="w-full max-w-md h-2 bg-gray-700 rounded-full overflow-hidden mb-4">
           <div
             className="h-2 bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 transition-all duration-200"
@@ -89,14 +82,10 @@ export default function Spinner() {
           />
         </div>
 
-        {/* Frase dinámica */}
         <p
           key={tick}
           className="text-center font-semibold text-lg sm:text-xl bg-clip-text text-transparent transition-opacity duration-500"
-          style={{
-            backgroundImage:
-              "linear-gradient(90deg, #f472b6, #a78bfa, #60a5fa)",
-          }}
+          style={{ backgroundImage: "linear-gradient(90deg, #f472b6, #a78bfa, #60a5fa)" }}
         >
           {phrases[tick]}
         </p>
@@ -104,7 +93,5 @@ export default function Spinner() {
     );
   }
 
-  // Redirección cuando termina
-  window.location.href = "/";
   return null;
 }

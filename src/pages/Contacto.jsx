@@ -1,8 +1,9 @@
-// src/pages/Contacto.jsx
 import { useRef, useEffect } from "react";
 import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 export default function Contacto() {
   const formRef = useRef(null);
@@ -101,90 +102,95 @@ export default function Contacto() {
   return (
     <div className="min-h-screen bg-black text-yellow-300 flex flex-col items-center px-4 py-8 md:py-10">
       <h1
-        className="text-2xl md:text-5xl font-bold mb-4 text-center drop-shadow-lg"
+        className="text-2xl md:text-5xl font-bold mb-4 text-center drop-shadow-lg normal-case"
         data-aos="fade-down"
       >
         ¿Listo para comenzar tu Web?
       </h1>
       <p
-        className="text-gray-300 text-center max-w-xl mb-6 md:mb-8 text-base md:text-lg"
+        className="text-gray-300 text-center max-w-xl mb-6 md:mb-8 text-base md:text-lg normal-case"
         data-aos="fade-up"
       >
         Solo necesito algunos datos para comenzar a trabajar en tu proyecto.
       </p>
 
-      {/* Timeline */}
-      <div className="w-full max-w-5xl mb-10 md:mb-12">
-        {/* Desktop: timeline horizontal */}
-        <div className="hidden md:flex items-center justify-between relative">
-          <div className="absolute top-1/2 left-0 w-full h-1 bg-blue-600"></div>
-          {steps.map((step, index) => (
-            <div
-              key={index}
-              className="relative flex flex-col items-center text-center w-1/6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg"
-              data-aos="zoom-in"
-            >
-              <div className="circle-pulse w-12 h-12 flex items-center justify-center rounded-full bg-blue-600 text-white font-bold z-10">
-                {index + 1}
-              </div>
-              <p className="mt-2 text-gray-300 text-sm md:text-base">{step}</p>
+      {/* Timeline Desktop */}
+      <div className="hidden md:flex w-full max-w-5xl mb-10 md:mb-12 items-center justify-between relative">
+        <div className="absolute top-1/2 left-0 w-full h-1 bg-blue-600"></div>
+        {steps.map((step, index) => (
+          <div
+            key={index}
+            className="relative flex flex-col items-center text-center w-1/6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg normal-case"
+            data-aos="zoom-in"
+          >
+            <div className="circle-pulse w-12 h-12 flex items-center justify-center rounded-full bg-blue-600 text-white font-bold z-10">
+              {index + 1}
             </div>
-          ))}
-        </div>
-
-        {/* Mobile: timeline tipo cards */}
-        <div className="flex flex-col gap-2 md:hidden">
-          {steps.map((step, index) => (
-            <div
-              key={index}
-              className="flex items-center gap-2 bg-gray-900 border border-blue-500 rounded-lg p-2 shadow-sm transition-colors duration-300 hover:bg-blue-800"
-              data-aos="fade-up"
-            >
-              <div className="w-5 h-5 flex items-center justify-center rounded-full bg-blue-600 text-white font-bold text-[10px]">
-                {index + 1}
-              </div>
-              <p className="text-gray-300 text-[11px]">{step}</p>
-            </div>
-          ))}
-        </div>
+            <p className="mt-2 text-gray-300 text-sm md:text-base">{step}</p>
+          </div>
+        ))}
       </div>
 
-  <form
-  ref={formRef}
-  target="dummyFrame"
-  action="https://script.google.com/macros/s/AKfycbxRLOBv59HTTmL_zhVDuH-8cCNzZEoNLbDCJIMoS9by8VNLdJREX79DdR3OnerkVFKdPw/exec"
-  method="POST"
-  onSubmit={handleSubmit}
-  className="bg-gray-900 border-2 border-blue-500 rounded-xl w-full max-w-md p-4 md:p-6 space-y-3"
-  style={{ boxShadow: "0 0 10px #00bfae, 0 0 20px #00bfae" }}
-  noValidate
-  data-aos="fade-up"
->
-  <iframe name="dummyFrame" style={{ display: "none" }}></iframe>
+      {/* Timeline Mobile - Swiper */}
+      <div className="w-full max-w-md md:hidden mb-10">
+        <Swiper
+          spaceBetween={16}
+          slidesPerView={2}
+          centeredSlides={true}
+          loop={true}
+        >
+          {steps.map((step, index) => (
+            <SwiperSlide key={index}>
+              <div
+                className="bg-gray-900 border border-blue-500 rounded-lg p-4 shadow-sm text-center normal-case"
+                data-aos="fade-up"
+              >
+                <div className="w-6 h-6 flex items-center justify-center rounded-full bg-blue-600 text-white font-bold mb-2">
+                  {index + 1}
+                </div>
+                <p className="text-gray-300 text-[11px]">{step}</p>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
 
-  {["nombre", "negocio", "giro", "telefono", "correo"].map((field) => (
-    <input
-      key={field}
-      type={field === "correo" ? "email" : "text"}
-      name={field}
-      placeholder={
-        field === "correo"
-          ? "Correo Electrónico"
-          : field.charAt(0).toUpperCase() + field.slice(1)
-      }
-      className="w-full px-3 py-2 md:py-3 bg-black border border-blue-500 text-white placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 transition-all duration-200 text-sm md:text-base"
-    />
-  ))}
+      {/* Formulario */}
+      <form
+        ref={formRef}
+        target="dummyFrame"
+        action="https://script.google.com/macros/s/AKfycbxRLOBv59HTTmL_zhVDuH-8cCNzZEoNLbDCJIMoS9by8VNLdJREX79DdR3OnerkVFKdPw/exec"
+        method="POST"
+        onSubmit={handleSubmit}
+        className="bg-gray-900 border-2 border-blue-500 rounded-xl w-full max-w-md p-4 md:p-6 space-y-3 normal-case"
+        style={{ boxShadow: "0 0 10px #00bfae, 0 0 20px #00bfae" }}
+        noValidate
+        data-aos="fade-up"
+      >
+        <iframe name="dummyFrame" style={{ display: "none" }}></iframe>
 
-  <button
-    type="submit"
-    className="w-full font-semibold py-3 md:py-3 rounded-full text-white transition-transform duration-300 hover:scale-105 text-sm md:text-base"
-    style={{ background: "linear-gradient(to right, #f472b6, #a78bfa, #60a5fa)" }}
-  >
-    Enviar
-  </button>
-</form>
+        {["nombre", "negocio", "giro", "telefono", "correo"].map((field) => (
+          <input
+            key={field}
+            type={field === "correo" ? "email" : "text"}
+            name={field}
+            placeholder={
+              field === "correo"
+                ? "Correo Electrónico"
+                : field.charAt(0).toUpperCase() + field.slice(1)
+            }
+            className="w-full px-3 py-2 md:py-3 bg-black border border-blue-500 text-white placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 transition-all duration-200 text-sm md:text-base normal-case"
+          />
+        ))}
 
+        <button
+          type="submit"
+          className="w-full font-semibold py-3 md:py-3 rounded-full text-white normal-case transition-transform duration-300 hover:scale-105 text-sm md:text-base"
+          style={{ background: "linear-gradient(to right, #f472b6, #a78bfa, #60a5fa)" }}
+        >
+          Enviar
+        </button>
+      </form>
 
       {/* Animación CSS para pulsos */}
       <style>{`
