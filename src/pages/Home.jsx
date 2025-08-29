@@ -94,6 +94,7 @@ export default function Home() {
       <section className="bg-black text-white w-full overflow-x-hidden" id="Secc2">
         <Biografia />
       </section>
+      
     </main>
   );
 }
