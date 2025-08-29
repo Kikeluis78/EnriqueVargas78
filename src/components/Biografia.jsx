@@ -50,19 +50,6 @@ const Biografia = () => {
         >
           Misión y Visión
         </button>
-
-        {/* Carrusel horizontal (opcional) */}
-        <div className="w-full mt-8 flex space-x-4 overflow-x-auto no-scrollbar p-2">
-          <div className="min-w-[200px] h-40 bg-yellow-400 rounded-xl flex items-center justify-center text-black font-bold">
-            Proyecto 1
-          </div>
-          <div className="min-w-[200px] h-40 bg-yellow-500 rounded-xl flex items-center justify-center text-black font-bold">
-            Proyecto 2
-          </div>
-          <div className="min-w-[200px] h-40 bg-yellow-600 rounded-xl flex items-center justify-center text-black font-bold">
-            Proyecto 3
-          </div>
-        </div>
       </div>
 
       {/* Foto con efecto hover */}

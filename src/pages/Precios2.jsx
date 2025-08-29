@@ -153,19 +153,19 @@ export default function Precios2() {
                 "El primer año está incluido. A partir del segundo año, puedes renovarlo con nosotros o directamente con el proveedor. Te ayudamos en el proceso para que no pierdas tu web.",
             },
             {
-              pregunta: "¿Puedo pedir más secciones o funciones personalizadas?",
+              pregunta: "¿Puedo Incluir más secciones o funciones personalizadas?",
               respuesta:
                 "¡Claro! Los planes básicos incluyen lo anunciado, pero siempre puedes solicitar extras como más secciones, integración con pasarelas de pago, reservas, chat en línea, etc.",
             },
             {
               pregunta: "¿En cuánto tiempo entregan la página?",
               respuesta:
-                "Dependiendo de la complejidad, un sitio básico se entrega en 5 a 7 días hábiles. Tiendas en línea o proyectos personalizados pueden tardar entre 10 y 20 días.",
+                "Dependiendo de la complejidad, un sitio básico se entrega en 5 a 7 días hábiles. Tiendas en línea o proyectos personalizados pueden tardar entre 10-20 y un maximo de 120 días. de acuerdo a las integraciones que el cliente demande",
             },
             {
               pregunta: "¿Qué métodos de pago aceptan?",
               respuesta:
-                "Aceptamos transferencias bancarias, depósitos y pagos vía PayPal. También podemos ofrecer pagos parciales según el proyecto.",
+                "Aceptamos transferencias bancarias, depósitos y pagos vía PayPal(en proceso). También podemos ofrecer pagos parciales según el proyecto(Para cualquier cliente existe un a opcion de pago).",
             },
             {
               pregunta: "¿Ofrecen soporte después de la entrega?",

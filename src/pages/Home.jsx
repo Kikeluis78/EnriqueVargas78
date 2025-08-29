@@ -4,8 +4,8 @@ import Biografia from "../components/Biografia";
 
 const phrases = [
   "Visitantes en clientes",
-  "Diseños increíbles ",
-  "Marketing digital",
+  "te conoceran en Internet",
+  "Publicidad Digital",
 ];
 
 export default function Home() {
