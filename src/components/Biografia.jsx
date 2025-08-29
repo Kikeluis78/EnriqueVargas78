@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Mision from "./Mision"; 
-import "../scroll.css"; 
+
 
 const Biografia = () => {
   const [openModal, setOpenModal] = useState(false);

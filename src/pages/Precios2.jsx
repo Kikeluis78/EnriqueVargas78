@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
-import "../styles/scroll.css"; // importa el CSS de scroll
+
 
 export default function Precios2() {
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function Precios2() {
       easing: "ease-in-out",
       offset: 100,
     });
-  }, []);
+  }, [])
 
   const paquetes = [
     {
